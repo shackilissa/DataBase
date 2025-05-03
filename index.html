@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prisma Corporation - Soluções Tecnológicas e Acadêmicas em Quelimane</title>
+    <style>
+        :root {
+            --primary: #4a148c;
+            --secondary: #7b1fa2;
+            --accent: #e91e63;
+            --light: #f5f5f5;
+            --dark: #212121;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .logo span {
+            color: var(--accent);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 2rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            color: var(--accent);
+        }
+        
+        .hero {
+            background: url("prisma.png") no-repeat center center/cover;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            color: white;
+            max-width: 600px;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background: #c2185b;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .whatsapp-btn {
+            background: #25D366;
+            display: inline-flex;
+            align-items: center;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-btn:hover {
+            background: #128C7E;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .whatsapp-btn i {
+            margin-right: 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .services {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 1rem;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--accent);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .service-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .service-card:hover .service-img img {
+            transform: scale(1.1);
+        }
+        
+        .service-content {
+            padding: 1.5rem;
+        }
+        
+        .service-content h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+.book-slideshow {
+    position: relative;
+    height: 250px; 
+    width: 100%;
+    overflow: hidden;
+    margin: 0 auto;
+    background: #f5f5f5; 
+}
+
+.book-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.book-slide.active {
+    opacity: 1;
+}
+
+.book-slide img {
+    max-width: 80%;
+    max-height: 100%;
+    object-fit: contain;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.book-navigation {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 10;
+}
+
+.book-dot {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin: 0 5px;
+    background-color: rgba(255,255,255,0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.book-dot.active {
+    background-color: #e91e63; 
+}
+        
+.about {
+    padding: 5rem 0;
+    position: relative;
+    background: url('prisma.png') no-repeat center center/cover;
+    color: white; 
+}
+
+.about::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(74, 20, 140, 0.85); 
+}
+
+.about .container {
+    position: relative;
+    z-index: 1;
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.about-text {
+    background: rgba(139, 89, 89, 0.9); 
+    padding: 2rem;
+    border-radius: 8px;
+    color: var(--dark); 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+@media (max-width: 768px) {
+    .about-text {
+        padding: 1.5rem;
+    }
+}
+/* Estilo do slideshow de projetos */
+.project-slideshow {
+    position: relative;
+    height: 200px;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 8px 8px 0 0;
+}
+
+.project-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.project-slide.active {
+    opacity: 1;
+}
+
+.project-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.project-navigation {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 10;
+}
+
+.project-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+    background-color: rgba(255,255,255,0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.project-dot.active {
+    background-color: var(--accent);
+}
+.academic-slideshow {
+    position: relative;
+    height: 200px;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 8px 8px 0 0;
+}
+
+.academic-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.academic-slide.active {
+    opacity: 1;
+}
+
+.academic-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.academic-navigation {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 10;
+}
+
+.academic-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+    background-color: rgba(255,255,255,0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.academic-dot.active {
+    background-color: var(--accent);
+}
+
+.service-features {
+    margin-top: 1rem;
+}
+
+.service-features p {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0.3rem 0;
+    font-size: 0.9rem;
+}
+
+.service-features i {
+    color: var(--accent);
+}
+        
+        .contact {
+            padding: 5rem 0;
+            text-align: center;
+        }
+        
+        .contact-info {
+            background: var(--primary);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .contact-info h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .contact-info p {
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .contact-info i {
+            margin-right: 0.5rem;
+            color: var(--accent);
+        }
+        
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 0 1rem;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-section h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-section ul li a {
+            color: #bbb;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-section ul li a:hover {
+            color: var(--accent);
+        }
+        
+        .social-links a {
+            display: inline-block;
+            margin-right: 1rem;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            border-top: 1px solid #444;
+            padding-top: 1.5rem;
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0 1rem;
+            }
+            
+            .hero-content {
+                text-align: center;
+                padding: 0 1rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-img {
+                order: -1;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="prisma.png">
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">Prisma <span>Corporation</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#services">Serviços</a></li>
+                    <li><a href="#about">Sobre</a></li>
+                    <li><a href="#contact">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h1>Soluções Integradas</h1>
+            <p>Tecnologia, desenvolvimento acadêmico e crescimento pessoal - tudo em um só lugar para atender às suas necessidades.</p>
+            <a href="#contact" class="btn">Saiba Mais</a>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nossos Serviços</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Desenvolvimento Web">
+                    </div>
+                    <div class="service-content">
+                        <h3>Desenvolvimento Web</h3>
+                        <p>Criação de páginas web profissionais e sistemas web personalizados para sua empresa ou projeto pessoal, com design responsivo e otimizado.</p>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="Captura de ecrã 2025-05-03 213115.png" alt="Manutenção Eletrônica">
+                    </div>
+                    <div class="service-content">
+                        <h3>Manutenção de Dispositivos</h3>
+                        <p>Reparação e manutenção de equipamentos eletrônicos, computadores, impressoras e outros dispositivos, com técnicos qualificados.</p>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-img">
+                        <div class="academic-slideshow">
+                            <div class="academic-slide active">
+                                <img src="t2.png" alt="Monografia">
+                            </div>
+                            <div class="academic-slide">
+                                <img src="t3.png" alt="Tese">
+                            </div>
+                            <div class="academic-slide">
+                                <img src="t2.png" alt="Pesquisa Acadêmica">
+                            </div>
+                            <div class="academic-slide">
+                                <img src="t1.png" alt="Projeto Científico">
+                            </div>
+                            
+                            <div class="academic-navigation">
+                                <span class="academic-dot active" data-slide="0"></span>
+                                <span class="academic-dot" data-slide="1"></span>
+                                <span class="academic-dot" data-slide="2"></span>
+                                <span class="academic-dot" data-slide="3"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="service-content">
+                        <h3>Trabalhos Acadêmicos</h3>
+                        <p>Elaboração de trabalhos científicos, monografias, teses e pesquisas acadêmicas com qualidade e rigor científico, atendendo às normas exigidas.</p>
+                        <div class="service-features">
+                            <p><i class="fas fa-check-circle"></i> Formatação ABNT/APA</p>
+                            <p><i class="fas fa-check-circle"></i> Revisão ortográfica</p>
+                            <p><i class="fas fa-check-circle"></i> Orientação especializada</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="original-08d14b81689ddbc7a008c7f0996743e3.jpeg" alt="Reprografia">
+                    </div>
+                    <div class="service-content">
+                        <h3>Reprografia Acadêmica</h3>
+                        <p>Serviços de impressão, digitalização, encadernação e venda de materiais acadêmicos. Tudo o que você precisa para seus estudos em um só lugar.</p>
+                    </div>
+                </div>
+                    <div class="service-card">
+                        <div class="service-img">
+                            <div class="project-slideshow">
+                                <div class="project-slide active">
+                                    <img src="c1 (4).png" alt="Consultoria em TI">
+                                </div>
+                                <div class="project-slide">
+                                    <img src="c1 (2).png" alt="Análise de Sistemas">
+                                </div>
+                                <div class="project-slide">
+                                    <img src="c1 (3).png" alt="Orientação de Projetos">
+                                </div>
+                                <div class="project-navigation">
+                                    <span class="project-dot active" data-slide="0"></span>
+                                    <span class="project-dot" data-slide="1"></span>
+                                    <span class="project-dot" data-slide="2"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="service-content">
+                            <h3>Consultório de Projetos Informáticos</h3>
+                            <p>Orientacão especializada para desenvolvimento de projetos tecnológicos, desde a concepção até a implementação.</p>
+                            <div class="service-features">
+                                <p><i class="fas fa-check-circle"></i> Consultoria personalizada</p>
+                                <p><i class="fas fa-check-circle"></i> Análise de viabilidade técnica</p>
+                                <p><i class="fas fa-check-circle"></i> Acompanhamento em todas as fases</p>
+                                <p><i class="fas fa-check-circle"></i> Soluções sob medida</p>
+                            </div>
+                        </div>
+                    </div>
+                
+                <div class="service-card">
+                    <div class="service-img">
+                        <div class="book-slideshow">
+                            <div class="book-slide active">
+                                <img src="https://m.media-amazon.com/images/I/71aG+xDKSYL._AC_UF1000,1000_QL80_.jpg" alt="48 Leis do Poder">
+                            </div>
+                            <div class="book-slide">
+                                <img src="Captura de ecrã 2025-05-03 211658.png" alt="Pense e Enriqueça">
+                            </div>
+                            <div class="book-slide">
+                                <img src="https://m.media-amazon.com/images/I/81bsw6fnUiL._AC_UF1000,1000_QL80_.jpg" alt="Pai Rico Pai Pobre">
+                            </div>
+                            <div class="book-slide">
+                                <img src="Captura de ecrã 2025-05-03 211606.png" alt="Mais Esperto que o Diabo">
+                            </div>
+                            <div class="book-slide">
+                                <img src="https://m.media-amazon.com/images/I/71KilybDOoL._AC_UF1000,1000_QL80_.jpg" alt="O Poder do Hábito">
+                            </div>
+                            <div class="book-slide">
+                                <img src="Captura de ecrã 2025-05-03 211944.png" alt="Pense e Enriqueça">
+                            </div>
+                            <div class="book-slide">
+                                <img src="https://m.media-amazon.com/images/I/81WZ6QvGZ2L._AC_UF1000,1000_QL80_.jpg" alt="7 Hábitos">
+                            </div>
+                            <div class="book-slide">
+                                <img src="Captura de ecrã 2025-05-03 211542.png" alt="Como Fazer Amigos">
+                            </div>
+                            <div class="book-navigation">
+                                <span class="book-dot active" data-slide="0"></span>
+                                <span class="book-dot" data-slide="1"></span>
+                                <span class="book-dot" data-slide="2"></span>
+                                <span class="book-dot" data-slide="3"></span>
+                                <span class="book-dot" data-slide="4"></span>
+                                <span class="book-dot" data-slide="5"></span>
+                                <span class="book-dot" data-slide="6"></span>
+                                <span class="book-dot" data-slide="7"></span>
+                            </div>
+                        </div>
+                    
+                </div>
+                <div class="service-content">
+                    <h3>Livros de Desenvolvimento Mental</h3>
+                    <p>Venda de livros especializados em desenvolvimento pessoal, mental e profissional. Amplie seus conhecimentos e potencial com nossa seleção de best-sellers como 48 Leis do Poder, Pense e Enriqueça, Pai Rico Pai Pobre e Mais Esperto que o Diabo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    </div>
+
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Sobre a Prisma Corporation</h2>
+                    <p>A Prisma Corporation é uma empresa moçambicana sediada em Quelimane, dedicada a oferecer soluções integradas para desenvolvimento tecnológico, acadêmico e pessoal. Nossa missão é facilitar o acesso à tecnologia e conhecimento de qualidade na região.</p>
+                    <p>Com uma equipe multidisciplinar, oferecemos desde desenvolvimento web e manutenção de equipamentos até apoio acadêmico completo, incluindo reprografia e venda de materiais educacionais.</p>
+                    <p>Recentemente, expandimos nosso portfólio para incluir uma seleção cuidadosa de livros de desenvolvimento mental e pessoal, ajudando nossos clientes a alcançar seu potencial máximo.</p>
+                    <p>Na Prisma Corporation, cada serviço é prestado com excelência, atendimento personalizado e compromisso com os resultados que nossos clientes precisam.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Entre em Contacto</h2>
+            </div>
+            <div class="contact-info">
+                <h3>Fale Connosco</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Av. Eduardo Mondlane, Quelimane, Zambézia, Moçambique</p>
+                <p><i class="fas fa-phone"></i> +258 84 2304833 / +258 872304834 /+258 850453433</p>
+                <p><i class="fas fa-envelope"></i> prismacorporation@gmail.co.mz</p>
+                <p><i class="fas fa-clock"></i> Seg-Sex: 8:00 - 18:00 | Sáb: 9:00 - 13:00</p>
+                
+                <a href="https://wa.me/258841234567" class="whatsapp-btn" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Contactar via WhatsApp
+                </a>
+                
+                <div class="social-links" style="margin-top: 2rem;">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Prisma Corporation</h3>
+                    <p>Soluções integradas em tecnologia, serviços acadêmicos e desenvolvimento pessoal em Quelimane.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Serviços</h3>
+                    <ul>
+                        <li><a href="#">Desenvolvimento Web</a></li>
+                        <li><a href="#">Software Web</a></li>
+                        <li><a href="#">Manutenção Eletrônica</a></li>
+                        <li><a href="#">Trabalhos Acadêmicos</a></li>
+                        <li><a href="#">Reprografia</a></li>
+                        <li><a href="#">Livros de Desenvolvimento</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Links Úteis</h3>
+                    <ul>
+                        <li><a href="#home">Início</a></li>
+                        <li><a href="#services">Serviços</a></li>
+                        <li><a href="#about">Sobre Nós</a></li>
+                        <li><a href="#contact">Contacto</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Prisma Corporation. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>document.addEventListener('DOMContentLoaded', function() {
+        const slides = document.querySelectorAll('.book-slide');
+        const dots = document.querySelectorAll('.book-dot');
+        let currentSlide = 0;
+        const slideInterval = 3000; 
+        
+        function showSlide(n) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            currentSlide = (n + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+        
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+        
+        let slideTimer = setInterval(nextSlide, slideInterval);
+        
+        dots.forEach(dot => {
+            dot.addEventListener('click', function() {
+                clearInterval(slideTimer);
+                const slideIndex = parseInt(this.getAttribute('data-slide'));
+                showSlide(slideIndex);
+                slideTimer = setInterval(nextSlide, slideInterval);
+            });
+        });
+        
+        const slideshowContainer = document.querySelector('.book-slideshow');
+        slideshowContainer.addEventListener('mouseenter', () => {
+            clearInterval(slideTimer);
+        });
+        
+        slideshowContainer.addEventListener('mouseleave', () => {
+            slideTimer = setInterval(nextSlide, slideInterval);
+        });
+    });
+    document.addEventListener('DOMContentLoaded', function() {
+    const academicSlides = document.querySelectorAll('.academic-slide');
+    const academicDots = document.querySelectorAll('.academic-dot');
+    let academicCurrent = 0;
+    const academicInterval = 2000; 
+    
+    function showAcademicSlide(n) {
+        academicSlides.forEach(slide => slide.classList.remove('active'));
+        academicDots.forEach(dot => dot.classList.remove('active'));
+        
+        academicCurrent = (n + academicSlides.length) % academicSlides.length;
+        academicSlides[academicCurrent].classList.add('active');
+        academicDots[academicCurrent].classList.add('active');
+    }
+    
+    function nextAcademicSlide() {
+        showAcademicSlide(academicCurrent + 1);
+    }
+    
+    let academicTimer = setInterval(nextAcademicSlide, academicInterval);
+    
+    academicDots.forEach(dot => {
+        dot.addEventListener('click', function() {
+            clearInterval(academicTimer);
+            const slideIndex = parseInt(this.getAttribute('data-slide'));
+            showAcademicSlide(slideIndex);
+            academicTimer = setInterval(nextAcademicSlide, academicInterval);
+        });
+    });
+    
+    const academicContainer = document.querySelector('.academic-slideshow');
+    academicContainer.addEventListener('mouseenter', () => {
+        clearInterval(academicTimer);
+    });
+    
+    academicContainer.addEventListener('mouseleave', () => {
+        academicTimer = setInterval(nextAcademicSlide, academicInterval);
+    });
+});
+document.addEventListener('DOMContentLoaded', function() {
+    const projectSlides = document.querySelectorAll('.project-slide');
+    const projectDots = document.querySelectorAll('.project-dot');
+    let projectCurrent = 0;
+    const projectInterval = 2500;
+    
+    function showProjectSlide(n) {
+        projectSlides.forEach(slide => slide.classList.remove('active'));
+        projectDots.forEach(dot => dot.classList.remove('active'));
+        
+        projectCurrent = (n + projectSlides.length) % projectSlides.length;
+        projectSlides[projectCurrent].classList.add('active');
+        projectDots[projectCurrent].classList.add('active');
+    }
+    
+    function nextProjectSlide() {
+        showProjectSlide(projectCurrent + 1);
+    }
+    
+    let projectTimer = setInterval(nextProjectSlide, projectInterval);
+    
+    projectDots.forEach(dot => {
+        dot.addEventListener('click', function() {
+            clearInterval(projectTimer);
+            const slideIndex = parseInt(this.getAttribute('data-slide'));
+            showProjectSlide(slideIndex);
+            projectTimer = setInterval(nextProjectSlide, projectInterval);
+        });
+    });
+    
+    const projectContainer = document.querySelector('.project-slideshow');
+    if(projectContainer) {
+        projectContainer.addEventListener('mouseenter', () => {
+            clearInterval(projectTimer);
+        });
+        
+        projectContainer.addEventListener('mouseleave', () => {
+            projectTimer = setInterval(nextProjectSlide, projectInterval);
+        });
+    }
+});
+  </script>
+</body>
+</html>
